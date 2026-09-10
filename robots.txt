@@ -1,0 +1,7 @@
+# Kevin Thibbles Immigration Services Inc.
+# https://kevinthibbles.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://kevinthibbles.com/sitemap.xml
