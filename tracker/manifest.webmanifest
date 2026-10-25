@@ -1,0 +1,15 @@
+{
+  "name": "Canada Visa Wait Times · Kevin Thibbles Immigration",
+  "short_name": "Visa Wait Times",
+  "description": "IRCC processing times by visa type and country, with the law behind each visa.",
+  "start_url": "./?source=app",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F6F1E7",
+  "theme_color": "#A8001E",
+  "lang": "en-CA",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

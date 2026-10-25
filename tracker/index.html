@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canada Visa Wait Times · Kevin Thibbles Immigration</title>
+<meta name="description" content="Check IRCC processing times for Canadian visitor visas, super visas, study and work permits by the country you apply from, and see the law behind each visa. From Kevin Thibbles, RCIC.">
+<meta name="theme-color" content="#A8001E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Visa Wait Times">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F6F1E7;
+  --paper: #FBF8F2;
+  --ink: #1C1A17;
+  --muted: #5E574D;
+  --line: #E1D8C8;
+  --red: #A8001E;
+  --red-dark: #7E0016;
+  --soft-red: #F3E3E1;
+  --radius: 14px;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; }
+a { color: var(--red); }
+.wrap { max-width: 60rem; margin: 0 auto; padding: 0 16px; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+header.top { padding: 20px 0 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+header.top a.brand { text-decoration: none; color: var(--ink); }
+.install { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; background: none; border: 1px solid var(--ink); color: var(--ink); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.install[hidden] { display: none; }
+
+.hero { padding: 28px 0 20px; }
+.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.08; margin: 8px 0 14px; letter-spacing: -.01em; }
+.hero h1 em { font-style: italic; color: var(--red); }
+.hero p { margin: 0; max-width: 40rem; color: var(--muted); font-size: 17px; }
+
+.panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 14px; }
+.controls label { display: flex; flex-direction: column; gap: 6px; }
+select { appearance: none; -webkit-appearance: none; width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231C1A17' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center; border: 1px solid var(--line); border-radius: 10px; padding: 12px 40px 12px 14px; cursor: pointer; }
+select:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+select:disabled { color: var(--muted); background-color: var(--cream); cursor: not-allowed; }
+
+.result { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); align-items: start; }
+.big { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 9vw, 4rem); line-height: 1; margin: 8px 0 8px; font-variant-numeric: tabular-nums; }
+.big.small { font-size: clamp(1.4rem, 4vw, 1.8rem); line-height: 1.25; }
+.sub { color: var(--muted); font-size: 14px; }
+.others { margin: 0; padding: 0; list-style: none; }
+.others li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.others li:last-child { border-bottom: 0; }
+.others li span:last-child { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stale { margin-top: 10px; font-size: 13px; color: var(--red-dark); }
+
+section.block { padding: 40px 0 0; }
+section.block h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.1rem); margin: 6px 0 6px; line-height: 1.15; }
+section.block > .intro { color: var(--muted); margin: 0 0 18px; max-width: 42rem; }
+.cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.card h3 { font-size: 16px; font-weight: 600; margin: 6px 0 6px; line-height: 1.3; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.card .label a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.card.warn { border-color: var(--red); background: var(--soft-red); }
+
+.changes { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.changes li { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(7.5rem, auto) 1fr; gap: 6px 18px; }
+.changes .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 2px; }
+.changes h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
+.changes p { margin: 0; color: var(--muted); font-size: 15px; }
+@media (max-width: 34rem) { .changes li { grid-template-columns: 1fr; } }
+
+.cta { margin: 48px 0 0; background: var(--red); color: var(--cream); border-radius: var(--radius); padding: 28px 22px; }
+.cta h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin: 0 0 8px; line-height: 1.15; }
+.cta p { margin: 0 0 18px; max-width: 38rem; color: #F8E6E3; }
+.cta .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; text-decoration: none; font-weight: 600; border-radius: 999px; padding: 12px 20px; font-size: 15px; }
+.btn.solid { background: var(--cream); color: var(--red); }
+.btn.line { border: 1px solid var(--cream); color: var(--cream); }
+
+footer { padding: 36px 0 48px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+footer .disclaimer { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px; }
+footer strong { color: var(--ink); font-weight: 600; }
+
+.toast { position: fixed; left: 16px; right: 16px; bottom: 16px; max-width: 28rem; margin: 0 auto; background: var(--ink); color: var(--cream); border-radius: 12px; padding: 14px 16px; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.toast[hidden] { display: none; }
+.toast button { float: right; background: none; border: 0; color: var(--cream); font: inherit; text-decoration: underline; cursor: pointer; margin-left: 10px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand label" href="https://kevinthibbles.com">Kevin Thibbles Immigration Services</a>
+    <button class="install" id="install" hidden>Install app</button>
+  </header>
+
+  <div class="hero">
+    <div class="label">Canada visa wait times</div>
+    <h1>How long will your Canadian visa take, <em>and what does the law require?</em></h1>
+    <p>Choose your visa type and the country you're applying from. You'll see IRCC's latest published processing time, the parts of Canada's immigration law that apply, and recent changes that could affect you.</p>
+  </div>
+
+  <main>
+    <div class="panel" id="checker">
+      <div class="controls">
+        <label><span class="label">Visa type</span><select id="visa" aria-label="Visa type"></select></label>
+        <label><span class="label">Applying from</span><select id="country" aria-label="Country you are applying from"></select></label>
+      </div>
+      <div class="result" aria-live="polite">
+        <div id="main-result">
+          <div class="label" id="result-label">Processing time</div>
+          <div class="big" id="result-time">—</div>
+          <div class="sub" id="result-note">Loading the latest IRCC times…</div>
+          <div class="stale" id="stale" hidden></div>
+        </div>
+        <div id="other-wrap">
+          <div class="label" id="other-label">Other applications for this visa</div>
+          <ul class="others" id="others"></ul>
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="law">
+      <div class="label">The law behind it</div>
+      <h2 id="law-title">What Canada's immigration law requires</h2>
+      <p class="intro">These are the parts of the Immigration and Refugee Protection Act (IRPA) that matter most for this visa, in plain language. Select a section to read the official text.</p>
+      <div class="cards" id="law-cards"></div>
+    </section>
+
+    <section class="block" id="changes">
+      <div class="label">Recent changes</div>
+      <h2>Recent changes to the law</h2>
+      <p class="intro" id="changes-intro">Canada's immigration law was last amended on March 26, 2026. Changes that touch this visa type are listed below.</p>
+      <ul class="changes" id="change-list"></ul>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Not sure where you stand? Let's talk.</h2>
+      <p>Processing times tell you how long IRCC takes, not whether you'll be approved. I review your situation, flag the risks honestly and prepare a strong application. Refused before? I help clients reapply.</p>
+      <div class="btns">
+        <a class="btn solid" href="https://kevinthibbles.com/#contact">Book a consultation</a>
+        <a class="btn line" href="mailto:kthibbles@kevinthibbles.com?subject=Visa%20question%20from%20the%20wait-times%20app">Email me</a>
+        <a class="btn line" href="tel:+16479076890">Call 647-907-6890</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="disclaimer">
+      <strong>Important.</strong> This app gives general information only. It is not legal advice and does not create a consultant–client relationship. Processing times are IRCC's own estimates, published by the country an application is submitted from, and they change regularly; they are not a guarantee of how long your application will take or of its outcome. Every application is decided by IRCC on its own facts. Law summaries are simplified; the official text on the Justice Laws Website prevails. This app is not affiliated with or endorsed by the Government of Canada or IRCC.
+    </div>
+    <p><strong>Kevin Thibbles Immigration Services Inc.</strong><br>
+    Kevin Thibbles, Regulated Canadian Immigration Consultant (RCIC-IRB), licence R713044<br>
+    Licensed by the College of Immigration and Citizenship Consultants (CICC) · Pickering, Ontario</p>
+    <p>Processing times: Immigration, Refugees and Citizenship Canada, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html" rel="noopener">canada.ca</a>. Law: <a href="https://laws-lois.justice.gc.ca/eng/acts/i-2.5/" rel="noopener">Justice Laws Website</a>. <span id="fetched"></span></p>
+  </footer>
+</div>
+
+<div class="toast" id="ios-tip" hidden><button id="ios-close">Close</button>To install: tap the Share button, then <strong>Add to Home Screen</strong>.</div>
+
+<script>
+(() => {
+  const LAW = 'https://laws-lois.justice.gc.ca/eng/acts/i-2.5/section-';
+
+  const VISAS = [
+    { id: 'trv', name: 'Visitor visa (TRV) / eTA', short: 'visitor visa', byCountry: true },
+    { id: 'super', name: 'Super visa (parents & grandparents)', short: 'super visa', byCountry: true },
+    { id: 'study', name: 'Study permit', short: 'study permit', byCountry: true },
+    { id: 'work', name: 'Work permit (incl. open work permit, PGWP)', short: 'work permit', byCountry: true },
+    { id: 'ee', name: 'Express Entry (permanent residence)', short: 'Express Entry' },
+    { id: 'pnp', name: 'Provincial Nominee Program', short: 'the Provincial Nominee Program' },
+    { id: 'family', name: 'Spousal & family sponsorship', short: 'family sponsorship' },
+    { id: 'pr', name: 'Permanent residents (PR card, keeping status)', short: 'permanent residents' },
+    { id: 'trp', name: 'Temporary resident permit (TRP)', short: 'a temporary resident permit' },
+  ];
+
+  // Plain-language summaries of the IRPA provisions that matter most to each visa type.
+  const COMMON = [
+    { s: '16', t: 'Answer every question truthfully', d: 'You must answer the officer’s questions truthfully and provide the documents they reasonably ask for.' },
+    { s: '40', t: 'Misrepresentation can bar you for five years', d: 'Giving false information or leaving out important facts, even by mistake, can make you inadmissible to Canada, generally for five years.' },
+  ];
+  const CRIME = { s: '36', t: 'A criminal record can make you inadmissible', d: 'Past convictions or charges, in Canada or abroad, can block your application. If this applies to you, speak with an immigration lawyer.', warn: true };
+  const L = {
+    trv: [
+      { s: '11', t: 'Apply and be approved before you travel', d: 'You need a visitor visa before coming to Canada. Travellers from visa-exempt countries who fly in need an electronic travel authorization (eTA) instead.' },
+      { s: '20', t: 'Show you will leave at the end of your visit', d: 'The officer must be satisfied you will leave Canada when your authorized stay ends. Ties to home, such as a job, family or property, matter.' },
+      { s: '39', t: 'Show you can support yourself', d: 'You must show you have enough money for your trip and stay, or that someone in Canada will support you.' },
+      { s: '22', t: 'Planning to immigrate one day is allowed', d: 'Wanting to live in Canada permanently in the future does not by itself stop you from getting a visitor visa, as long as you will leave when your visit ends.' },
+      ...COMMON, CRIME,
+    ],
+    super: [
+      { s: '15', t: 'A visa for long visits by parents and grandparents', d: 'The super visa lets parents and grandparents of Canadian citizens and permanent residents visit for an extended period. IRCC’s instructions also set requirements for an invitation letter, the host’s income, medical insurance and a medical exam.' },
+      { s: '15.1', t: 'Medical insurance can come from outside Canada', d: 'Since 2023, a policy from an insurer outside Canada that the Minister has approved can meet the super visa insurance requirement.' },
+      { s: '29', t: 'Stay up to five years at a time', d: 'Super visa holders can be authorized to stay in Canada for up to five years per entry.' },
+      { s: '20', t: 'Show you will leave at the end of your stay', d: 'As with any visitor, the officer must be satisfied you will leave Canada when your authorized stay ends.' },
+      { s: '38', t: 'Health and medical exam', d: 'A medical exam is required. A serious health condition can affect admissibility.' },
+      ...COMMON,
+    ],
+    study: [
+      { s: '30', t: 'You need permission to study', d: 'Foreign nationals may not study in Canada without authorization, usually a study permit. Minor children of parents who are allowed to work or study in Canada can attend school without one.' },
+      { s: '20', t: 'Show you will leave when your studies end', d: 'The officer must be satisfied you will leave Canada at the end of your authorized stay.' },
+      { s: '39', t: 'Show you can pay for your studies and living costs', d: 'You must show enough money for tuition, living expenses and travel.' },
+      { s: '41', t: 'Follow the conditions of your permit', d: 'Breaking the conditions, such as working more than allowed or stopping your studies, can make you inadmissible.' },
+      ...COMMON,
+    ],
+    work: [
+      { s: '30', t: 'You need permission to work', d: 'Foreign nationals may not work in Canada without authorization. Some work permits need a job offer and a Labour Market Impact Assessment (LMIA); others, such as open work permits and post-graduation work permits, do not.' },
+      { s: '20', t: 'Temporary workers must leave when their status ends', d: 'The officer must be satisfied you will leave Canada at the end of your authorized stay, unless you gain another status.' },
+      { s: '41', t: 'Follow the conditions of your permit', d: 'Working for an employer or in a job your permit doesn’t allow can make you inadmissible.' },
+      { s: '87.3001', t: 'New in 2026: group cancellations', d: 'The federal Cabinet can now cancel, suspend or change groups of visas and permits, or pause new applications, when it decides this is in the public interest.' },
+      ...COMMON,
+    ],
+    ee: [
+      { s: '10.1', t: 'You must be invited to apply', d: 'Express Entry programs only accept permanent residence applications from candidates who receive an invitation.' },
+      { s: '10.3', t: 'Draws can target categories', d: 'The Minister can hold draws for categories of candidates, such as French speakers or people in health care or the trades, tied to Canada’s economic goals.' },
+      { s: '12', t: 'Selection based on economic potential', d: 'Economic immigrants are chosen for their ability to become economically established in Canada.' },
+      { s: '38', t: 'Medical exam and health', d: 'You and your family members must pass a medical exam.' },
+      ...COMMON, CRIME,
+    ],
+    pnp: [
+      { s: '8', t: 'Provinces nominate, Canada decides', d: 'Provinces and territories select nominees under agreements with the federal government. IRCC still makes the final decision on your permanent residence, including admissibility.' },
+      { s: '9', t: 'Quebec selects its own immigrants', d: 'Quebec runs its own selection programs. If you plan to live in Quebec, its rules apply.' },
+      { s: '10.1', t: 'Some streams run through Express Entry', d: 'Enhanced provincial streams are linked to Express Entry, where a nomination adds points to your profile.' },
+      ...COMMON, CRIME,
+    ],
+    family: [
+      { s: '12', t: 'Family class', d: 'Spouses, partners, dependent children, parents, grandparents and some other relatives can be sponsored based on their relationship to a Canadian citizen or permanent resident.' },
+      { s: '13', t: 'Who can sponsor', d: 'Canadian citizens and permanent residents can sponsor eligible family members, subject to the Regulations.' },
+      { s: '13.1', t: 'The sponsor’s promise of support', d: 'Sponsors sign an undertaking to support the person they sponsor for a set period. It is enforceable.' },
+      { s: '38', t: 'Health rules are gentler for spouses and children', d: 'Sponsored spouses, partners and dependent children cannot be refused because their health condition would place excessive demand on health or social services.' },
+      { s: '63', t: 'Sponsors can appeal a refusal', d: 'If a family class application is refused, the sponsor can usually appeal to the Immigration Appeal Division.' },
+      ...COMMON,
+    ],
+    pr: [
+      { s: '28', t: 'Keep your residency obligation', d: 'Permanent residents must be physically present in Canada for at least 730 days in every five-year period.' },
+      { s: '31', t: 'Your PR card', d: 'The PR card is proof of your status. Travelling back to Canada without a valid card usually requires a PR travel document.' },
+      { s: '46', t: 'How PR status can be lost', d: 'Status can be lost if a residency-obligation decision becomes final, if you renounce it, or through a removal order.' },
+      { s: '63', t: 'You can appeal a residency decision', d: 'A decision that you did not meet the residency obligation can be appealed to the Immigration Appeal Division.' },
+      ...COMMON,
+    ],
+    trp: [
+      { s: '24', t: 'A permit for people who are inadmissible', d: 'An officer can issue a temporary resident permit to someone who would otherwise be inadmissible, if their reason to be in Canada justifies it.' },
+      CRIME,
+      ...COMMON,
+    ],
+  };
+
+  const CHANGES = [
+    { date: 'March 26, 2026', bill: 'Bill C-12', title: 'Strengthening Canada’s Immigration System and Borders Act', d: 'New eligibility rules for asylum claims, and new powers for Cabinet to cancel, suspend or change groups of visas, eTAs and permits, or pause applications, in the public interest.', visas: ['trv', 'super', 'study', 'work'] },
+    { date: 'June 22, 2023', bill: 'Bill C-242', title: 'Reuniting Families Act', d: 'Super visa holders may buy medical insurance from approved insurers outside Canada and stay up to five years per entry.', visas: ['super'] },
+    { date: 'June 22, 2023', bill: 'Bill S-8', title: 'Sanctions and inadmissibility', d: 'People subject to Canadian sanctions are now inadmissible on a distinct sanctions ground.', visas: ['all'] },
+    { date: 'June 22, 2023', bill: 'Bill C-47', title: 'Budget Implementation Act, 2023', d: 'Changes affecting sponsorship applications and the rules for immigration consultants.', visas: ['family'] },
+    { date: 'June 23, 2022', bill: 'Bill C-19', title: 'Category-based Express Entry', d: 'Allowed Express Entry draws to target categories of candidates tied to economic goals.', visas: ['ee', 'pnp'] },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const visaSel = $('visa'), countrySel = $('country');
+  let data = null, names = {}, fromCache = false;
+
+  const params = new URLSearchParams(location.search);
+  let state = { visa: params.get('visa') || 'trv', from: (params.get('from') || '').toUpperCase() };
+  if (!VISAS.some((v) => v.id === state.visa)) state.visa = 'trv';
+
+  visaSel.replaceChildren(...VISAS.map((v) => new Option(v.name, v.id)));
+  visaSel.value = state.visa;
+
+  function saveUrl() {
+    const p = new URLSearchParams();
+    p.set('visa', state.visa);
+    if (state.from) p.set('from', state.from);
+    history.replaceState(null, '', '?' + p.toString() + location.hash);
+  }
+
+  function li(label, value) {
+    const el = document.createElement('li');
+    const a = document.createElement('span'); a.textContent = label;
+    const b = document.createElement('span'); b.textContent = value;
+    el.append(a, b);
+    return el;
+  }
+
+  function fillCountries() {
+    const v = VISAS.find((x) => x.id === state.visa);
+    if (!v.byCountry || !data) {
+      countrySel.disabled = true;
+      countrySel.replaceChildren(new Option(v.byCountry ? 'Loading countries…' : 'Not country-specific for this visa', ''));
+      return;
+    }
+    countrySel.disabled = false;
+    const codes = Object.keys(data.by_country[state.visa] || {}).filter((c) => c !== 'CA');
+    const opts = codes.map((c) => ({ c, n: names[c] || c })).sort((a, b) => a.n.localeCompare(b.n));
+    countrySel.replaceChildren(new Option('Choose a country…', ''), ...opts.map((o) => new Option(o.n, o.c)));
+    countrySel.value = codes.includes(state.from) ? state.from : '';
+  }
+
+  function renderResult() {
+    const v = VISAS.find((x) => x.id === state.visa);
+    const big = $('result-time'), label = $('result-label'), note = $('result-note');
+    const others = $('others');
+    others.replaceChildren();
+    big.classList.remove('small');
+    if (!data) return;
+    const progs = (data.programs || []).filter((p) => p.visa === state.visa);
+    if (v.byCountry) {
+      const t = state.from ? (data.by_country[state.visa] || {})[state.from] : null;
+      const cname = names[state.from] || state.from;
+      if (!state.from) {
+        label.textContent = 'Processing time';
+        big.textContent = '—'; note.textContent = 'Choose the country you’re applying from.';
+      } else if (!t || /no processing time|not enough data/i.test(t)) {
+        label.textContent = 'Applying from ' + cname;
+        big.textContent = 'Not published'; big.classList.add('small');
+        note.textContent = 'IRCC hasn’t published a processing time for applications from this country right now.';
+      } else {
+        label.textContent = 'Applying from ' + cname;
+        big.textContent = t;
+        note.textContent = 'IRCC estimate for ' + v.short + ' applications submitted from ' + cname + '. Updated ' + data.updated_temporary + '.';
+      }
+      $('other-label').textContent = 'Other applications for this visa';
+      progs.forEach((p) => others.appendChild(li(p.application, p.time)));
+      $('other-wrap').hidden = !progs.length;
+    } else {
+      label.textContent = v.name;
+      if (progs.length) {
+        big.textContent = progs[0].time; big.classList.toggle('small', big.textContent.length > 12);
+        note.textContent = progs[0].application + '. IRCC estimate, updated ' + (data.updated_pr || data.updated_temporary) + '.';
+        $('other-label').textContent = progs.length > 1 ? 'Other applications for this visa' : '';
+        progs.slice(1).forEach((p) => others.appendChild(li(p.application, p.time)));
+        $('other-wrap').hidden = progs.length < 2;
+      } else {
+        big.textContent = 'Not published'; big.classList.add('small');
+        note.textContent = 'IRCC does not publish a standard processing time for this application type.';
+        $('other-wrap').hidden = true;
+      }
+    }
+  }
+
+  function renderLaw() {
+    const v = VISAS.find((x) => x.id === state.visa);
+    $('law-title').textContent = 'What the law requires for ' + v.short;
+    const box = $('law-cards');
+    box.replaceChildren(...(L[state.visa] || []).map((x) => {
+      const c = document.createElement('article'); c.className = 'card' + (x.warn ? ' warn' : '');
+      const lab = document.createElement('div'); lab.className = 'label';
+      const a = document.createElement('a'); a.href = LAW + x.s + '.html'; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'IRPA section ' + x.s;
+      lab.appendChild(a);
+      const h = document.createElement('h3'); h.textContent = x.t;
+      const p = document.createElement('p'); p.textContent = x.d;
+      c.append(lab, h, p);
+      return c;
+    }));
+  }
+
+  function renderChanges() {
+    const list = $('change-list');
+    const hits = CHANGES.filter((c) => c.visas.includes(state.visa) || c.visas.includes('all'));
+    list.replaceChildren(...hits.map((c) => {
+      const el = document.createElement('li');
+      const w = document.createElement('div'); w.className = 'when'; w.textContent = c.date;
+      const body = document.createElement('div');
+      const h = document.createElement('h3'); h.textContent = c.bill + ': ' + c.title;
+      const p = document.createElement('p'); p.textContent = c.d;
+      body.append(h, p); el.append(w, body);
+      return el;
+    }));
+  }
+
+  function renderAll() { fillCountries(); renderResult(); renderLaw(); renderChanges(); }
+
+  visaSel.addEventListener('change', () => { state.visa = visaSel.value; saveUrl(); renderAll(); });
+  countrySel.addEventListener('change', () => { state.from = countrySel.value; saveUrl(); renderResult(); });
+
+  async function load() {
+    try {
+      const [d, n] = await Promise.all([
+        fetch('data/processing-times.json', { cache: 'no-cache' }).then((r) => { fromCache = r.headers.get('x-from-cache') === '1'; if (!r.ok) throw new Error(r.status); return r.json(); }),
+        fetch('data/country-names.json').then((r) => r.json()),
+      ]);
+      data = d; names = n;
+      if (fromCache) { $('stale').hidden = false; $('stale').textContent = 'You’re offline. Showing the times saved on this device.'; }
+      if (d.fetched_at) $('fetched').textContent = 'Times last checked ' + new Date(d.fetched_at).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' }) + '.';
+    } catch (e) {
+      $('result-time').textContent = '—';
+      $('result-note').textContent = 'The processing times could not be loaded. Please check your connection and try again.';
+    }
+    renderAll();
+  }
+  renderLaw(); renderChanges(); fillCountries();
+  load();
+
+  // Install as an app
+  let deferred = null;
+  const btn = $('install');
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferred = e; btn.hidden = false; });
+  btn.addEventListener('click', async () => {
+    if (deferred) { deferred.prompt(); await deferred.userChoice; deferred = null; btn.hidden = true; }
+    else { $('ios-tip').hidden = false; }
+  });
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (isIOS && !standalone) btn.hidden = false;
+  $('ios-close').addEventListener('click', () => { $('ios-tip').hidden = true; });
+
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>
