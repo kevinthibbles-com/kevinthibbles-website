@@ -14,7 +14,8 @@ tpl = open(os.path.join(ROOT, "gcms-notes.html"), encoding="utf-8").read()
 icons = tpl[tpl.index('<link rel="icon"'):tpl.index('<meta name="theme-color"')]
 site_css = tpl[tpl.index('<link rel="preconnect"'):tpl.index('</style><script>') + len('</style>')]
 theme_js = tpl[tpl.index('</style><script>') + len('</style>'):tpl.index('</head>')]
-nav = tpl[tpl.index('<nav class="nav"'):tpl.index('</nav>') + len('</nav>')]
+nav_end = tpl.index('<!-- /mobile-menu -->') + len('<!-- /mobile-menu -->') if '<!-- /mobile-menu -->' in tpl else tpl.index('</nav>') + len('</nav>')
+nav = tpl[tpl.index('<nav class="nav"'):nav_end]
 if '/insights/' not in nav: nav = nav.replace('      <a href="/#contact">Contact</a>', '      <a href="/insights/">Insights</a>\n      <a href="/#contact">Contact</a>')
 footer_and_after = tpl[tpl.index('<footer class="footer">'):tpl.index('</body>')]
 
@@ -150,7 +151,7 @@ NEW_CSS = page_css + r'''
 .post-card .more { margin-top: auto; font-weight: 600; color: var(--maple); font-size: .93rem; }
 .post-card .tag-list a { font-size: .68rem; padding: .3rem .65rem; }
 .empty { color: var(--stone); }
-@media (max-width: 640px) { .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .4rem; margin-right: -2rem; padding-right: 2rem; } .tag-btn { white-space: nowrap; flex: none; } }
+@media (max-width: 640px) { .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .4rem; } .tag-btn { white-space: nowrap; flex: none; } }
 @media (prefers-reduced-motion: reduce) { .post-card { transition: none; } .post-card:hover { transform: none; } }
 '''
 

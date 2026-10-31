@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
@@ -857,6 +857,57 @@ em, .em { font-style: italic; font-family: var(--font-display); }
 if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
+<style id="responsive">
+/* ── Phone and tablet layer (scripts/responsive_patch.py) ── */
+/* Menu: switch to the menu button below 900px so tablets in portrait don't get a cramped link row */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none !important; }
+  .nav-mobile-btn { display: flex !important; }
+}
+.nav-mobile-btn { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; border-radius: 8px; }
+.nav-mobile-btn span { transform-origin: center; }
+.nav-mobile-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-mobile-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-mobile-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { overflow-y: auto; padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); }
+.mobile-menu a { min-height: 48px; display: flex; align-items: center; }
+.mobile-menu .mm-cta { margin-top: 1.5rem; justify-content: center; border: 0; border-radius: 99px;
+  background: var(--ink); color: var(--paper); font-family: var(--font-body); font-size: 1rem; font-weight: 600; padding: 1rem 1.5rem; }
+.mobile-menu .mm-cta:hover { background: var(--maple); }
+body.menu-open { overflow: hidden; }
+body.menu-open .tracker-float, body.menu-open .wa-float { display: none; }
+
+/* Touch screens: bigger tap targets everywhere */
+@media (pointer: coarse) {
+  .nav-links a { padding: .8rem .2rem; }
+  .theme-toggle { width: 44px; height: 44px; }
+  .breadcrumb a { display: inline-block; padding: .55rem 0; }
+  .related a { padding: 1.05rem 0; }
+  .footer-links a { padding: .35rem 0; }
+  .text-link { display: inline-block; padding: .35rem 0; }
+}
+
+/* Headlines: drop desktop-only line breaks and balance the lines on smaller screens */
+.page-title, .hero-title, .section-title { text-wrap: balance; }
+@media (max-width: 768px) { .page-title br, .hero-title br { display: none; } }
+
+/* Tablet portrait: the full-height hero leaves large empty space, so let content set the height */
+@media (max-width: 1024px) and (orientation: portrait) {
+  .hero { min-height: auto; padding-top: 9rem; padding-bottom: 5rem; }
+}
+
+/* Keep the floating buttons clear of the iPhone home bar and leave room for them at the end of the page */
+.tracker-float, .wa-float { margin-bottom: env(safe-area-inset-bottom, 0px); }
+@media (max-width: 1024px) { body { padding-bottom: 5.5rem; } }
+
+/* Phones: a little more room for text, and 16px form fields so iOS doesn't zoom in when you tap them */
+@media (max-width: 420px) { .wrap { padding-left: 1.25rem; padding-right: 1.25rem; } }
+@media (max-width: 900px) { input, select, textarea { font-size: 16px !important; } }
+
+/* Wide content scrolls inside its own box instead of pushing the page sideways */
+img, svg, video { max-width: 100%; }
+.prose table { display: block; overflow-x: auto; }
+</style>
 </head>
 <body id="top">
 
@@ -876,14 +927,35 @@ document.documentElement.setAttribute('data-theme',t);})();
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       </button>
       <a href="/#contact" class="nav-cta">Book free call</a>
+      <button class="nav-mobile-btn" id="mobileBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/#about">About</a>
+  <a href="/#services">Services</a>
+  <a href="/#process">Process</a>
+  <a href="/tracker/">Visa wait times</a>
+  <a href="/insights/">Insights</a>
+  <a href="/#contact">Contact</a>
+  <a href="/#contact" class="mm-cta">Book free call</a>
+  <button class="theme-toggle" data-theme-toggle aria-label="Switch between light and dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+</div>
+<!-- /mobile-menu -->
+
+
 <header class="page-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; GCMS notes</div>
-    <h1 class="page-title">GCMS notes are where<br>the real reasons live<span class="accent">.</span></h1>
+    <h1 class="page-title">GCMS notes are where <br>the real reasons live<span class="accent">.</span></h1>
     <p class="page-lede">Your refusal letter tells you which boxes were ticked. The GCMS notes often tell you what the officer was actually thinking. For a refused applicant, that difference is everything.</p>
     <div class="hero-actions">
       <a href="/#contact" class="btn-primary">Send me an enquiry</a>
@@ -976,6 +1048,23 @@ document.querySelectorAll('[data-theme-toggle]').forEach(function(b){
 window.addEventListener('scroll', function(){
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>20);
 });
+</script>
+<script id="responsive-menu">
+(function () {
+  var btn = document.getElementById('mobileBtn'), menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function set(open) {
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function () { set(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) { set(false); btn.focus(); } });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900) set(false); });
+  window.closeMobile = function () { set(false); };
+})();
 </script>
 </body>
 </html>
