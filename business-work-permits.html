@@ -993,6 +993,8 @@ em, .em { font-style: italic; font-family: var(--font-display); }
 [hidden] { display: none !important; }
 /* ── blog components ── */
 .post-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: -1rem 0 2rem; }
+.post-meta .mono-label { white-space: nowrap; }
+@media (max-width: 520px) { .post-meta { flex-direction: column; gap: .35rem; } }
 .code { font-family: var(--font-mono); font-size: .78rem; font-weight: 500; color: var(--maple);
   background: var(--maple-tint); padding: .2rem .5rem; border-radius: 4px; white-space: nowrap; }
 .routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 2rem 0; }

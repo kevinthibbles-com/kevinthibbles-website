@@ -77,6 +77,8 @@ NEW_CSS = page_css + r'''
 [hidden] { display: none !important; }
 /* ── blog components ── */
 .post-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: -1rem 0 2rem; }
+.post-meta .mono-label { white-space: nowrap; }
+@media (max-width: 520px) { .post-meta { flex-direction: column; gap: .35rem; } }
 .code { font-family: var(--font-mono); font-size: .78rem; font-weight: 500; color: var(--maple);
   background: var(--maple-tint); padding: .2rem .5rem; border-radius: 4px; white-space: nowrap; }
 .routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 2rem 0; }
@@ -553,6 +555,10 @@ POSTS = [
      "Common study permit refusal reasons, what GCMS notes reveal, and how to build a stronger reapplication.",
      "2026-09-10", [("study-permits", "Study permits"), ("visa-refusals", "Visa refusals")]),
 ]
+_gp = os.path.join(ROOT, "scripts", "gulf_posts.json")
+if os.path.exists(_gp):
+    for g in json.load(open(_gp, encoding="utf-8")):
+        POSTS.insert(1, (g["href"], g["title"], g["summary"], g["date"], [tuple(t) for t in g["tags"]]))
 all_tags = []
 for *_, tg in POSTS:
     for t in tg:

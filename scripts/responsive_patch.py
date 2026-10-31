@@ -135,6 +135,7 @@ def patch(path, is_home):
 
 if __name__ == "__main__":
     patch(HOME, True)
-    for f in ARTICLE_PAGES:
+    gulf = sorted(str(x.relative_to(ROOT)) for x in (ROOT / "gulf").glob("*.html")) if (ROOT / "gulf").exists() else []
+    for f in ARTICLE_PAGES + gulf:
         if (ROOT / f).exists():
             patch(f, False)
