@@ -1,7 +1,7 @@
 // Offline support for the Canada Visa Wait Times app.
 // App files: served from cache, refreshed in the background.
 // Processing-time data: always tries the network first, falls back to the saved copy offline.
-const CACHE = 'ktis-tracker-v1';
+const CACHE = 'ktis-tracker-v2';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'data/country-names.json', 'data/processing-times.json',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'];
 

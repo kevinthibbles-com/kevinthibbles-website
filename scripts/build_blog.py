@@ -14,7 +14,8 @@ tpl = open(os.path.join(ROOT, "gcms-notes.html"), encoding="utf-8").read()
 icons = tpl[tpl.index('<link rel="icon"'):tpl.index('<meta name="theme-color"')]
 site_css = tpl[tpl.index('<link rel="preconnect"'):tpl.index('</style><script>') + len('</style>')]
 theme_js = tpl[tpl.index('</style><script>') + len('</style>'):tpl.index('</head>')]
-nav = tpl[tpl.index('<nav class="nav"'):tpl.index('</nav>') + len('</nav>')]
+nav_end = tpl.index('<!-- /mobile-menu -->') + len('<!-- /mobile-menu -->') if '<!-- /mobile-menu -->' in tpl else tpl.index('</nav>') + len('</nav>')
+nav = tpl[tpl.index('<nav class="nav"'):nav_end]
 if '/insights/' not in nav: nav = nav.replace('      <a href="/#contact">Contact</a>', '      <a href="/insights/">Insights</a>\n      <a href="/#contact">Contact</a>')
 footer_and_after = tpl[tpl.index('<footer class="footer">'):tpl.index('</body>')]
 
@@ -76,6 +77,8 @@ NEW_CSS = page_css + r'''
 [hidden] { display: none !important; }
 /* ── blog components ── */
 .post-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: -1rem 0 2rem; }
+.post-meta .mono-label { white-space: nowrap; }
+@media (max-width: 520px) { .post-meta { flex-direction: column; gap: .35rem; } }
 .code { font-family: var(--font-mono); font-size: .78rem; font-weight: 500; color: var(--maple);
   background: var(--maple-tint); padding: .2rem .5rem; border-radius: 4px; white-space: nowrap; }
 .routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 2rem 0; }
@@ -150,7 +153,7 @@ NEW_CSS = page_css + r'''
 .post-card .more { margin-top: auto; font-weight: 600; color: var(--maple); font-size: .93rem; }
 .post-card .tag-list a { font-size: .68rem; padding: .3rem .65rem; }
 .empty { color: var(--stone); }
-@media (max-width: 640px) { .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .4rem; margin-right: -2rem; padding-right: 2rem; } .tag-btn { white-space: nowrap; flex: none; } }
+@media (max-width: 640px) { .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .4rem; } .tag-btn { white-space: nowrap; flex: none; } }
 @media (prefers-reduced-motion: reduce) { .post-card { transition: none; } .post-card:hover { transform: none; } }
 '''
 
@@ -552,6 +555,10 @@ POSTS = [
      "Common study permit refusal reasons, what GCMS notes reveal, and how to build a stronger reapplication.",
      "2026-09-10", [("study-permits", "Study permits"), ("visa-refusals", "Visa refusals")]),
 ]
+_gp = os.path.join(ROOT, "scripts", "gulf_posts.json")
+if os.path.exists(_gp):
+    for g in json.load(open(_gp, encoding="utf-8")):
+        POSTS.insert(1, (g["href"], g["title"], g["summary"], g["date"], [tuple(t) for t in g["tags"]]))
 all_tags = []
 for *_, tg in POSTS:
     for t in tg:

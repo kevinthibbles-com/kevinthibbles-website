@@ -64,6 +64,16 @@ select:disabled { color: var(--muted); background-color: var(--cream); cursor: n
 .others li span:last-child { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .stale { margin-top: 10px; font-size: 13px; color: var(--red-dark); }
 
+.gulf-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.gulf-wrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.gulf-table th, .gulf-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.gulf-table th { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.gulf-table tr:last-child td { border-bottom: 0; }
+.gulf-table td.t { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.gulf-table td.na { color: var(--muted); }
+.gulf-table button { font: inherit; color: var(--red); background: none; border: 0; padding: 6px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; min-height: 36px; }
+.gulf-table tr.on td { background: var(--soft-red); }
+.gulf-more { margin: 14px 0 0; font-size: 15px; }
 section.block { padding: 40px 0 0; }
 section.block h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.1rem); margin: 6px 0 6px; line-height: 1.15; }
 section.block > .intro { color: var(--muted); margin: 0 0 18px; max-width: 42rem; }
@@ -131,6 +141,19 @@ footer strong { color: var(--ink); font-weight: 600; }
         </div>
       </div>
     </div>
+
+    <section class="block" id="gulf">
+      <div class="label">Applying from the Gulf</div>
+      <h2 id="gulf-title">Processing times across the Gulf</h2>
+      <p class="intro">IRCC publishes times by the country you apply from, so a resident of Dubai and a resident of Riyadh can wait very different lengths of time. Here are the six Gulf countries side by side. Select one to see its full details above.</p>
+      <div class="gulf-wrap">
+        <table class="gulf-table">
+          <thead><tr><th>Applying from</th><th id="gulf-col">Visitor visa</th></tr></thead>
+          <tbody id="gulf-rows"></tbody>
+        </table>
+      </div>
+      <p class="gulf-more">Living in the Gulf? Read my <a href="/gulf/">guides for Gulf residents</a>, written from 11 years of living in Dubai.</p>
+    </section>
 
     <section class="block" id="law">
       <div class="label">The law behind it</div>
@@ -377,10 +400,33 @@ footer strong { color: var(--ink); font-weight: 600; }
     }));
   }
 
-  function renderAll() { fillCountries(); renderResult(); renderLaw(); renderChanges(); }
+  const GULF = [['AE', 'United Arab Emirates'], ['SA', 'Saudi Arabia'], ['QA', 'Qatar'], ['KW', 'Kuwait'], ['OM', 'Oman'], ['BH', 'Bahrain']];
+  function renderGulf() {
+    const v = VISAS.find((x) => x.id === state.visa);
+    const sec = $('gulf');
+    if (!v.byCountry) { sec.hidden = true; return; }
+    sec.hidden = false;
+    $('gulf-col').textContent = v.name.replace(/ \(.*\)$/, '');
+    const rows = GULF.map(([code, name]) => {
+      const t = data ? (data.by_country[state.visa] || {})[code] : null;
+      const tr = document.createElement('tr'); if (state.from === code) tr.className = 'on';
+      const a = document.createElement('td'); const b = document.createElement('button'); b.type = 'button';
+      b.textContent = names[code] || name;
+      b.addEventListener('click', () => { state.from = code; saveUrl(); renderAll(); $('checker').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      a.appendChild(b);
+      const c = document.createElement('td'); c.className = 't';
+      if (!data) c.textContent = '…';
+      else if (!t || /no processing time|not enough data/i.test(t)) { c.textContent = 'Not published'; c.className = 't na'; }
+      else c.textContent = t;
+      tr.append(a, c); return tr;
+    });
+    $('gulf-rows').replaceChildren(...rows);
+  }
+
+  function renderAll() { fillCountries(); renderResult(); renderGulf(); renderLaw(); renderChanges(); }
 
   visaSel.addEventListener('change', () => { state.visa = visaSel.value; saveUrl(); renderAll(); });
-  countrySel.addEventListener('change', () => { state.from = countrySel.value; saveUrl(); renderResult(); });
+  countrySel.addEventListener('change', () => { state.from = countrySel.value; saveUrl(); renderResult(); renderGulf(); });
 
   async function load() {
     try {
