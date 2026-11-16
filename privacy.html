@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F4F2EC">
+<title>Privacy Policy — Kevin Thibbles Immigration Services</title>
+<meta name="description" content="How Kevin Thibbles Immigration Services Inc. collects, uses and protects personal information sent through this website.">
+<link rel="canonical" href="https://kevinthibbles.com/privacy.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #F4F2EC; --paper-deep: #ECE9E0; --card: #FBFAF6;
+  --ink: #1C1A17; --ink-soft: #45413A; --stone: #5E584C; --line: #DDD8CC;
+  --maple: #A8001E; --maple-dark: #7E0016; --maple-tint: rgba(168,0,30,0.07);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-theme="dark"] {
+  --paper: #171512; --paper-deep: #121008; --card: #1F1C18;
+  --ink: #F0EDE5; --ink-soft: #C7C1B4; --stone: #A39C8A; --line: #2F2B24;
+  --maple: #D64358; --maple-dark: #B32B40; --maple-tint: rgba(214,67,88,0.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-body); background: var(--paper); color: var(--ink);
+  line-height: 1.65; min-height: 100vh; display: flex;
+  justify-content: center; padding: 3rem 1.5rem; -webkit-font-smoothing: antialiased;
+  transition: background .35s ease, color .35s ease;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--maple); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: 720px; width: 100%; }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; letter-spacing: -.01em; margin: 2.2rem 0 .6rem; }
+.wrap p, .wrap li { color: var(--ink-soft); font-size: 1rem; line-height: 1.75; }
+.wrap p { margin-bottom: .9rem; }
+.wrap ul { margin: 0 0 .9rem 1.2rem; }
+.wrap p a, .wrap li a { text-decoration: underline; text-underline-offset: 3px; }
+.wrap p a:hover, .wrap li a:hover { color: var(--maple); }
+.eyebrow {
+  font-family: var(--font-mono); font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--maple); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.eyebrow::before { content:""; width: 34px; height: 2px; background: var(--maple); }
+h1 {
+  font-family: var(--font-display); font-weight: 380;
+  font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.02;
+  letter-spacing: -.03em; margin-bottom: 1.25rem;
+}
+h1 .accent { color: var(--maple); font-style: italic; }
+.lede { font-size: 1.05rem; color: var(--ink-soft); line-height: 1.75; margin-bottom: 2.25rem; }
+.actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .93rem;
+  padding: .85rem 1.6rem; border-radius: 99px; border: 1px solid var(--line);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn.primary:hover { background: var(--maple); border-color: var(--maple); transform: translateY(-2px); }
+.btn.ghost:hover { border-color: var(--ink); background: var(--card); }
+.links-title {
+  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--stone); margin-bottom: .9rem;
+}
+.links { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.links a {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: .9rem 0; border-bottom: 1px solid var(--line);
+  font-size: .95rem; font-weight: 600; transition: color var(--transition), padding var(--transition);
+}
+.links a:hover { color: var(--maple); padding-left: .4rem; }
+.links a span.arrow { color: var(--stone); font-family: var(--font-mono); font-size: .85rem; }
+.foot {
+  margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .05em;
+  color: var(--stone); line-height: 1.9;
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+</style>
+<script>
+(function(){
+  let t=null;
+  try { t = localStorage.getItem('kt-theme'); } catch(e){}
+  if (t!=='dark' && t!=='light') {
+    t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+  <main class="wrap">
+    <div class="eyebrow">Privacy policy</div>
+    <h1>Your privacy<span class="accent">.</span></h1>
+    <p class="lede">This page explains what personal information Kevin Thibbles Immigration Services Inc. collects through this website, why, and what your choices are. Last updated: November 16, 2026.</p>
+
+    <h2>Who is responsible</h2>
+    <p>Kevin Thibbles Immigration Services Inc., 1050 Longbow Drive, Pickering, ON L1V 5W1, Canada. Kevin Thibbles (RCIC-IRB Class 3, R713044) is responsible for privacy at the practice. Contact: <a href="mailto:kthibbles@kevinthibbles.com">kthibbles@kevinthibbles.com</a>.</p>
+
+    <h2>What is collected</h2>
+    <ul>
+      <li><strong>Enquiry form:</strong> your name, email, the country you are applying from, your phone or WhatsApp number if you give one, the service you need, whether you have been refused before, and any message you write.</li>
+      <li><strong>Direct contact:</strong> whatever you choose to share when you email, phone or message on WhatsApp.</li>
+    </ul>
+    <p>Please do not send passport numbers, ID numbers or detailed personal history through the website form. Those are collected securely only after you decide to proceed.</p>
+
+    <h2>How it is used</h2>
+    <p>Your information is used only to reply to your enquiry, understand your situation, and tell you whether and how the practice can help. It is not sold, and it is not shared with anyone for their own marketing.</p>
+
+    <h2>Service providers</h2>
+    <ul>
+      <li>The enquiry form is delivered to the practice by email through Web3Forms, a third-party form delivery service.</li>
+      <li>Enquiries are then kept in the practice's email and client-management systems.</li>
+      <li>Fonts on this site are loaded from Google Fonts, so Google receives your IP address when a page loads.</li>
+    </ul>
+    <p>Some of these providers may store or process information outside Canada, where it is subject to the laws of that country.</p>
+
+    <h2>Cookies and tracking</h2>
+    <p>This website does not use advertising cookies or analytics trackers. Your browser stores a light or dark theme preference, a short-lived note that you have just sent an enquiry (to prevent duplicates), and an offline copy of the visa wait-times data. None of this is sent to the practice.</p>
+
+    <h2>How long it is kept</h2>
+    <p>If you do not become a client, your enquiry is kept only as long as reasonably needed to respond and follow up. If you become a client, your file is kept for the period required by the College of Immigration and Citizenship Consultants, and your retainer agreement explains how your information is handled.</p>
+
+    <h2>Your choices</h2>
+    <p>You can ask to see the information held about you, ask for it to be corrected, or withdraw your consent and ask for an enquiry to be deleted, by emailing <a href="mailto:kthibbles@kevinthibbles.com">kthibbles@kevinthibbles.com</a>. If you are not satisfied with the response, you can contact the <a href="https://www.priv.gc.ca/" target="_blank" rel="noopener">Office of the Privacy Commissioner of Canada</a>.</p>
+
+    <div class="actions" style="margin-top:2rem;">
+      <a href="/" class="btn primary">Back to the homepage</a>
+      <a href="/#contact" class="btn ghost">Send an enquiry</a>
+    </div>
+
+    <div class="foot">
+      Kevin Thibbles Immigration Services Inc.<br>
+      Regulated Canadian Immigration Consultant · RCIC-IRB Class 3 · R713044<br>
+      Regulated by the College of Immigration and Citizenship Consultants (CICC)
+    </div>
+  </main>
+</body>
+</html>
